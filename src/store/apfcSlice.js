@@ -11,7 +11,8 @@ const apfcSlice = createSlice({
                 model: '',
         }],
         itemsCount: 0,
-        totalAmount: 0
+        totalAmount: 0,
+        totalSteps: 0
     },
     reducers: {
         addApfc(state, action) {
@@ -29,6 +30,7 @@ const apfcSlice = createSlice({
             state.itemsCount = parseInt(state.itemsCount) + parseInt(newItem.quantity)            
             // updating amount
             state.totalAmount = parseInt(state.totalAmount) + parseInt(selectedProduct.price*newItem.quantity)
+            state.totalSteps = parseInt(state.totalSteps) + parseInt(newItem.noOfSteps);
 
             if(!existingItem) {
                 // state.itemsCount++;

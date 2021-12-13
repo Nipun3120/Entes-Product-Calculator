@@ -1,8 +1,9 @@
+// react components
 import { useState, forwardRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { apfcActions } from '../../../store/apfcSlice';
-import { Container, Typography } from '@mui/material';
-import { useApcfContext } from '../../../contexts';
+
+// css imports
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,22 +11,20 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import MuiAlert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-import CloseIcon from '@mui/icons-material/Close';
 
-import apfcList from '../../../database/apfcList';
-
+// other imports
+import { CATEGORY_1CT, CATEGORY_3CT } from '../../../database/staticLists';
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props}/>;
   });
 
+
 export const Apfc = ()=> {
     const dispatch = useDispatch();
-    // const { apfcItem, setApfcItem } = useApcfContext();
     const [type, setType] = useState('');
     const [steps, setSteps] = useState('');
     const [quantity, setQuantity] = useState('');
@@ -36,7 +35,6 @@ export const Apfc = ()=> {
     };
 
     const handleTypeChange = (event) => {
-        // console.log(event.target.value)
         setType(event.target.value);
     };
 
@@ -57,12 +55,7 @@ export const Apfc = ()=> {
                 noOfSteps: steps,
                 quantity,               
             }))
-            
-            // setApfcItem({
-            //     type,
-            //     noOfSteps: steps,
-            //     quantity,
-            // })
+        
             setType('');
             setSteps('');
             setQuantity('');
@@ -134,10 +127,14 @@ export const Apfc = ()=> {
                     onChange={handleStepsChange}
                     >
                     
-                        <MenuItem value={4}>4</MenuItem>
+                        {type === '1 CT' 
+                            ? CATEGORY_1CT.map(item=><MenuItem value={item}>{item}</MenuItem>)
+                            : CATEGORY_3CT.map(item=><MenuItem value={item}>{item}</MenuItem>)
+                        }
+                        {/* <MenuItem value={4}>4</MenuItem>
                         <MenuItem value={6}>6</MenuItem>
                         <MenuItem value={9}>9</MenuItem>
-                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={12}>12</MenuItem> */}
 
                     </Select>
             </FormControl>

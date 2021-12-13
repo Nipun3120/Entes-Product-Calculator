@@ -1,5 +1,4 @@
 import './bill.css';
-import { useApcfContext } from '../../contexts';
 import { useSelector } from 'react-redux';
 import { BillItem } from '../';
 
@@ -10,7 +9,7 @@ export const Bill = ()=> {
 
     return (
         <>
-            <div>Price</div>
+            <div>Your Package</div>
             <p>total apfc items: {count}</p>
             <div>
                 {apfcState.map((item, index) => {
