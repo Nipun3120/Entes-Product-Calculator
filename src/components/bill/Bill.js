@@ -1,20 +1,33 @@
+import './bill.css';
 import { useApcfContext } from '../../contexts';
+import { useSelector } from 'react-redux';
+import { BillItem } from '../';
 
 export const Bill = ()=> {
-    const { apfcItem, setApfcItem } = useApcfContext();
+    const apfcState = useSelector(state=> state.apfcState.items);
+    const totalBillingAmount = useSelector(state=> state.apfcState.totalAmount);
+    const count = useSelector(state=> state.apfcState.itemsCount);
+
     return (
         <>
-            <div>Bill</div>
+            <div>Price</div>
+            <p>total apfc items: {count}</p>
             <div>
-                {apfcItem.map((item, index) => {
+                {apfcState.map((item, index) => {
                     return (
-                        <>
-                            <p>{item.type}</p>
-                            <p>{item.noOfSteps}</p>
-                            <p>{item.quantity}</p>
-                        </>
+                        <div className="bill">
+                            <BillItem 
+                                key={index}
+                                id={index}
+                                type={item.type} 
+                                model={item.model} 
+                                noOfSteps={item.noOfSteps} 
+                                quantity={item.quantity}
+                            />
+                        </div>
                     )
                 })}
+                <p>Rs {totalBillingAmount}</p>
             </div>
         </>
     )

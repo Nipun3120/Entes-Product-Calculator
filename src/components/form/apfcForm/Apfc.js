@@ -1,4 +1,6 @@
 import { useState, forwardRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { apfcActions } from '../../../store/apfcSlice';
 import { Container, Typography } from '@mui/material';
 import { useApcfContext } from '../../../contexts';
 import Box from '@mui/material/Box';
@@ -22,7 +24,8 @@ const Alert = forwardRef(function Alert(props, ref) {
   });
 
 export const Apfc = ()=> {
-    const { apfcItem, setApfcItem } = useApcfContext();
+    const dispatch = useDispatch();
+    // const { apfcItem, setApfcItem } = useApcfContext();
     const [type, setType] = useState('');
     const [steps, setSteps] = useState('');
     const [quantity, setQuantity] = useState('');
@@ -49,11 +52,17 @@ export const Apfc = ()=> {
 
     const submitHandler = ()=> {
         if(type && steps && quantity) {
-            setApfcItem({
+            dispatch(apfcActions.addApfc({
                 type,
                 noOfSteps: steps,
-                quantity,
-            })
+                quantity,               
+            }))
+            
+            // setApfcItem({
+            //     type,
+            //     noOfSteps: steps,
+            //     quantity,
+            // })
             setType('');
             setSteps('');
             setQuantity('');
@@ -110,8 +119,8 @@ export const Apfc = ()=> {
                     label="type"
                     onChange={handleTypeChange}
                     >
-                        <MenuItem value={'1_CT'}>1 CT</MenuItem>
-                        <MenuItem value={'3_CT'}>3 CT</MenuItem>
+                        <MenuItem value={'1 CT'}>1 CT</MenuItem>
+                        <MenuItem value={'3 CT'}>3 CT</MenuItem>
                     </Select>
             </FormControl>
 
