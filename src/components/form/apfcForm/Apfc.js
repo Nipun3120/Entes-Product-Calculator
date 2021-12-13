@@ -30,22 +30,16 @@ export const Apfc = ()=> {
     const [quantity, setQuantity] = useState('');
     const [open, setOpen] = useState(false);
 
-    const handleClick = () => {
-      setOpen(true);
-    };
-
     const handleTypeChange = (event) => {
         setType(event.target.value);
     };
 
     const handleStepsChange = (event)=> {
-        console.log(event.target.value)
         setSteps(event.target.value);
     }
 
     const quantityOnchange = (event)=> {
         setQuantity(event.target.value)
-        console.log(quantity)
     }
 
     const submitHandler = ()=> {
@@ -70,38 +64,13 @@ export const Apfc = ()=> {
         setSteps('');
         setQuantity('');
     }
-    // const getStepsDropdown = ()=> {
-    //     if (!type) {
-    //         return (
-    //             <MenuItem>Please select type of APFC Relay First</MenuItem>
-    //         )
-    //     } else {
-    //         if(type === '1 CT') {
-    //             return (
-    //                 <>
-    //                     <MenuItem value={4}>4</MenuItem>
-    //                     <MenuItem value={6}>6</MenuItem>
-    //                     <MenuItem value={9}>9</MenuItem>
-    //                     <MenuItem value={12}>12</MenuItem>
-    //                 </>
-    //             )
-    //         } else {
-    //             return (
-    //                 <>
-    //                     <MenuItem value={9}>9</MenuItem>
-    //                     <MenuItem value={12}>12</MenuItem>
-    //                     <MenuItem value={15}>15</MenuItem>                        
-    //                 </>
-    //             )
-    //         }
-    //     }
-    // }
+    
     return(
         <div className="apfcFormWrapper">
         <Box sx={{ minWidth: 50 }}       
-        component="form"
-        noValidate
-        autoComplete="off"
+            component="form"
+            noValidate
+            autoComplete="off"
         >
             <FormControl size="medium" fullWidth required="true">
                 <InputLabel id="demo-simple-select-label">Type</InputLabel>
@@ -126,16 +95,10 @@ export const Apfc = ()=> {
                     label="Number Of Steps"
                     onChange={handleStepsChange}
                     >
-                    
                         {type === '1 CT' 
                             ? CATEGORY_1CT.map(item=><MenuItem value={item}>{item}</MenuItem>)
                             : CATEGORY_3CT.map(item=><MenuItem value={item}>{item}</MenuItem>)
                         }
-                        {/* <MenuItem value={4}>4</MenuItem>
-                        <MenuItem value={6}>6</MenuItem>
-                        <MenuItem value={9}>9</MenuItem>
-                        <MenuItem value={12}>12</MenuItem> */}
-
                     </Select>
             </FormControl>
             
@@ -170,7 +133,3 @@ export const Apfc = ()=> {
         </div>
     )
 }
-
-
-
-// type, no of steps, model, quantity
