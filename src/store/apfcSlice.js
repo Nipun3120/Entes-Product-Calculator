@@ -9,6 +9,7 @@ const apfcSlice = createSlice({
                 quantity: '',
                 noOfSteps: '',
                 model: '',
+                price: 0
         }],
         itemsCount: 0,
         totalAmount: 0,
@@ -38,7 +39,8 @@ const apfcSlice = createSlice({
                     type: newItem.type,
                     noOfSteps: newItem.noOfSteps,
                     quantity: parseInt(newItem.quantity),
-                    model: selectedProduct.model
+                    model: selectedProduct.model,
+                    price: selectedProduct.price
                 })
 
             } else {

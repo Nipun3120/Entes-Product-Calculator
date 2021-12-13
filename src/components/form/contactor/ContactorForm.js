@@ -1,6 +1,7 @@
 // react modules
 import { useState, forwardRef, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { contactorActions } from '../../../store/contactorSlice';
 
 // css imports
 import Box from '@mui/material/Box';
@@ -23,7 +24,8 @@ const Alert = forwardRef(function Alert(props, ref) {
 
 
 export const Contactor = ()=> {
-    const apfcCount = useSelector(state=> state.apfcState.itemsCount)
+    const dispatch = useDispatch();
+    const apfcCount = useSelector(state=> state.apfcState.itemsCount);
     const [rating, setRating] = useState('');
     const [quantity, setQuantity] = useState('');
     const [open, setOpen] = useState(false);
@@ -60,8 +62,10 @@ export const Contactor = ()=> {
         if(apfcCount) {
             if(rating && quantity) {
                 // send data
-                
-                console.log(rating, quantity)       
+                dispatch(contactorActions.addContactor({
+                    rating: rating,
+                    quantity: quantity
+                }))
                 setRating('');
                 setQuantity('');
                 setOpen(false);

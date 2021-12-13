@@ -1,5 +1,5 @@
 // react components
-import { useState, forwardRef } from 'react';
+import { useState, forwardRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { apfcActions } from '../../../store/apfcSlice';
 
@@ -29,6 +29,16 @@ export const Apfc = ()=> {
     const [steps, setSteps] = useState('');
     const [quantity, setQuantity] = useState('');
     const [open, setOpen] = useState(false);
+
+    useEffect(()=> {
+        const timeInterval = setTimeout(()=> {
+            setOpen(false)
+        }, 3000)
+
+        return ()=> {
+            clearInterval(timeInterval)
+        }
+    })
 
     const handleTypeChange = (event) => {
         setType(event.target.value);

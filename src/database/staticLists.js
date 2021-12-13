@@ -7,17 +7,17 @@ export const CATEGORY_3CT = [
 ]
 
 export const KVAR_RATING = [
-    '2.5 Kvar',
-    '5 Kvar',
-    '7.5 Kvar',
-    '12 Kvar',
-    '16 Kvar',
-    '20 Kvar',
-    '25 Kvar',
-    '33 Kvar',
-    '40 Kvar',
-    '50 Kvar',
-    '60 Kvar',
-    '75 Kvar',
-    '100 Kvar'
+    '2.5 KVar',
+    '5 KVar',
+    '7.5 KVar',
+    '12 KVar',
+    '16 KVar',
+    '20 KVar',
+    '25 KVar',
+    '33 KVar',
+    '40 KVar',
+    '50 KVar',
+    '60 KVar',
+    '75 KVar',
+    '100 KVar'
 ]
