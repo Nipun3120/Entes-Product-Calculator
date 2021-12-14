@@ -18,8 +18,6 @@ const contactorSlice = createSlice({
             const newItem = action.payload;
             const selectedProduct = capDutyContactor.find(item=> (item.rating === newItem.rating))
 
-            console.log(selectedProduct)
-            console.log(newItem)
             const existingItem = state.items.find(item => (item.rating === newItem.rating))
 
             state.totalAmount = parseInt(state.totalAmount) + parseInt(selectedProduct.price*newItem.quantity)
@@ -28,7 +26,7 @@ const contactorSlice = createSlice({
             if(!existingItem) {
                 state.items.push({
                     rating: newItem.rating,
-                    quantity: newItem.quantity,
+                    quantity: parseInt(newItem.quantity),
                     model: selectedProduct.model,
                     price: selectedProduct.price,
                 })
@@ -39,11 +37,10 @@ const contactorSlice = createSlice({
 
         decreaseItem(state, action) {
             const product = state.items.find((item, index)=> index === action.payload);
-            const selectedProduct = capDutyContactor.find(item=> (item.type === product.type && item.noOfSteps === product.noOfSteps))
-
-            state.totalAmount = state.totalAmount - parseInt(selectedProduct.price)
+            // const selectedProduct = capDutyContactor.find(item=> (item.rating === product.rating))
+            state.totalAmount = state.totalAmount - parseInt(product.price)
             state.totalQuantity--;
-            if(product.quantity === 1){
+            if(product.quantity === 1) {
                 state.items = state.items.filter((item, index)=> index !== action.payload)
             } else {
                 product.quantity--;

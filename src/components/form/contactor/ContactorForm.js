@@ -26,6 +26,7 @@ const Alert = forwardRef(function Alert(props, ref) {
 export const Contactor = ()=> {
     const dispatch = useDispatch();
     const apfcCount = useSelector(state=> state.apfcState.itemsCount);
+    const apfcTotalSteps = useSelector(state=> state.apfcState.totalSteps);
     const [rating, setRating] = useState('');
     const [quantity, setQuantity] = useState('');
     const [open, setOpen] = useState(false);
