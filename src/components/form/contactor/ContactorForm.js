@@ -49,19 +49,18 @@ export const Contactor = ()=> {
     };
 
     const handleRatingChange = (event)=> {
-        console.log(event.target.value)
         setRating(event.target.value);
     }
 
     const quantityOnchange = (event)=> {
         setQuantity(event.target.value)
-        console.log(quantity)
     }
 
     const submitHandler = ()=> {
         if(apfcCount) {
             if(rating && quantity) {
                 // send data
+                
                 dispatch(contactorActions.addContactor({
                     rating: rating,
                     quantity: quantity

@@ -1,24 +1,22 @@
 import { useDispatch } from "react-redux";
-import { apfcActions } from "../../store/apfcSlice";
+// import { apfcActions } from "../../store/apfcSlice";
+import { contactorActions } from "../../store/contactorSlice";
 
-export const BillItem = (props)=> {
+export const ContactorItem = (props)=> {
     const dispatch = useDispatch();
-    const {id, type, noOfSteps, model, quantity} = props;
+    const {id, rating, model, quantity} = props;
     
-
+    console.log(rating)
     const decreaseQuantity = ()=> {
         console.log(id)
-        dispatch(apfcActions.decreaseItem(id))
+        dispatch(contactorActions.decreaseItem(id))
 
     }
     return (
         <div>
             {/* {id !== 0 && id} */}
             <div>
-                {type !=='' && <p>Type of apfc: {type}</p>}
-            </div>
-            <div>
-                {noOfSteps !=='' && <p>Number Of Steps: {noOfSteps}</p>}
+                {rating !=='' && <p>Rating: {rating}</p>}
             </div>
             <div>
                 {quantity !== '' && 
