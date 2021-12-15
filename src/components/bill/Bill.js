@@ -10,6 +10,8 @@ export const Bill = ()=> {
     const contactorState = useSelector(state=> state.contactorState.items);
     const contQuantity = useSelector(state=> state.contactorState.totalQuantity);
     const totalContAmount = useSelector(state=> state.contactorState.totalAmount);
+    const apfcDiscountedPrice = useSelector(state=> state.apfcState.discountedAmount);
+    const contDiscountedPrice = useSelector(state=> state.contactorState.discountedAmount);
 
     return (
         <>
@@ -53,8 +55,23 @@ export const Bill = ()=> {
             </div>
             
             <div style={{borderTop:'1px solid #000'}}>
-                <h4>Total Amount</h4>
-                <p>Rs {totalApfcAmount + totalContAmount}</p>
+                <p>apfc total: {totalApfcAmount}</p>
+                <p>discount apfc: {apfcDiscountedPrice}</p>
+                
+                <p>cont total: {totalContAmount}</p>
+                <p>cont discount: {contDiscountedPrice}</p>
+                {/* <h4>Total Amount</h4>
+                <p>Discount: Rs {totalApfcAmount-apfcDiscountedPrice}</p>
+                <p>Rs {apfcDiscountedPrice}</p> */}
+                {/* <p>Discount: Rs {totalApfcAmount-apfcDiscountedPrice + totalContAmount - contDiscountedPrice}</p>
+                <p>Rs {apfcDiscountedPrice + contDiscountedPrice}</p> */}
+
+
+                <p>apfc cost: {totalApfcAmount-apfcDiscountedPrice}</p>
+                <p>cont cost: {totalContAmount - contDiscountedPrice}</p>
+
+                <p>grand total: {totalApfcAmount-apfcDiscountedPrice + totalContAmount - contDiscountedPrice}</p>
+
             </div>
         </>
     )

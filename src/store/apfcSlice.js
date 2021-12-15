@@ -13,7 +13,8 @@ const apfcSlice = createSlice({
         }],
         itemsCount: 0,
         totalAmount: 0,
-        totalSteps: 0
+        totalSteps: 0,
+        discountedAmount: 0
     },
     reducers: {
         addApfc(state, action) {
@@ -29,12 +30,13 @@ const apfcSlice = createSlice({
             
             // updating count
             state.itemsCount = parseInt(state.itemsCount) + parseInt(newItem.quantity)            
+            
             // updating amount
             state.totalAmount = parseInt(state.totalAmount) + parseInt(selectedProduct.price*newItem.quantity)
             state.totalSteps = parseInt(state.totalSteps) + parseInt(newItem.noOfSteps);
-
+            state.discountedAmount = parseInt(state.discountedAmount) + parseInt(((100-selectedProduct.discount)*(selectedProduct.price*newItem.quantity))/100)
+            
             if(!existingItem) {
-                // state.itemsCount++;
                 state.items.push({
                     type: newItem.type,
                     noOfSteps: newItem.noOfSteps,
@@ -49,14 +51,20 @@ const apfcSlice = createSlice({
             }
         },
         decreaseItem(state, action) {
-            // get item
-    
+            // geting item
             const product = state.items.find((item, index)=> index === action.payload);
             const selectedProduct = apfcList.find(item=> (item.type === product.type && item.noOfSteps === product.noOfSteps))
 
+            // decresign count by 1
             state.itemsCount--;
-            state.totalAmount = state.totalAmount - (selectedProduct.price)
 
+            // upadating amount
+            state.totalAmount = state.totalAmount - (selectedProduct.price)
+            console.log('disc: ', parseInt(((100-selectedProduct.discount)/100)*selectedProduct.price) )
+            console.log('disc: ', ((100-selectedProduct.discount)/100)*selectedProduct.price) 
+            state.discountedAmount = state.discountedAmount - parseInt(((100-selectedProduct.discount)/100)*selectedProduct.price)
+
+            console.log('hi', parseInt(((100-selectedProduct.discount)*(selectedProduct.price))/100), state.discountedAmount)
             if(product.quantity === 1){
                 state.items = state.items.filter((item, index)=> index !== action.payload)
             } else {
