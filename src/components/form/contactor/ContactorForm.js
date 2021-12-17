@@ -62,7 +62,7 @@ export const Contactor = ()=> {
                     setRating(rating);
                     setQuantity('');
                     setOpen(true);
-                    setErrorMessage(`You cannot add more than: ${Math.ceil((0.2*apfcTotalSteps)+apfcTotalSteps)} contractors`)
+                    setErrorMessage(`You cannot add more than ${Math.ceil((0.2*apfcTotalSteps)+apfcTotalSteps)} contractors`)
                 }
                 else {
                     dispatch(contactorActions.addContactor({

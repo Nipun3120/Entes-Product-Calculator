@@ -28,7 +28,7 @@ export const Bill = ()=> {
     }
 
     const submitHandler = ()=> {
-
+        // send data
     }
 
     return (
@@ -36,7 +36,7 @@ export const Bill = ()=> {
             <div>Your Package</div>
             <p>total apfc items: {count}</p>
             <p>total contractor quantity: {contQuantity}</p>
-            <p>steps: {steps}</p>
+            {/* <p>steps: {steps}</p> */}
             <div style={{borderTop:'1px solid #000'}}>
                 <h4>APFC</h4>
                 {apfcState.map((item, index) => {
@@ -74,23 +74,11 @@ export const Bill = ()=> {
             </div>
             
             <div style={{borderTop:'1px solid #000'}}>
-                {/* <p>apfc total: {totalApfcAmount}</p>
-                <p>discount apfc: {apfcDiscountedPrice}</p>
-                
-                <p>cont total: {totalContAmount}</p>
-                <p>cont discount: {contDiscountedPrice}</p> */}
-                {/* <h4>Total Amount</h4>
-                <p>Discount: Rs {totalApfcAmount-apfcDiscountedPrice}</p>
-                <p>Rs {apfcDiscountedPrice}</p> */}
-                {/* <p>Discount: Rs {totalApfcAmount-apfcDiscountedPrice + totalContAmount - contDiscountedPrice}</p>
-                <p>Rs {apfcDiscountedPrice + contDiscountedPrice}</p> */}
 
-{/* 
-                <p>apfc cost: {totalApfcAmount-apfcDiscountedPrice}</p>
-                <p>cont cost: {totalContAmount - contDiscountedPrice}</p> */}
-
-                <h4>Total Amount: Rs. {apfcDiscountedPrice + contDiscountedPrice}</h4>
-                <p>You save: Rs. {totalApfcAmount-apfcDiscountedPrice + totalContAmount - contDiscountedPrice}</p>
+                <h4>Package Price</h4>
+                <h4>List Price: Rs. {totalApfcAmount+totalContAmount}</h4>
+                <h4>Special Combo price: Rs. {apfcDiscountedPrice + contDiscountedPrice}</h4>
+                <p>(You save: Rs. {totalApfcAmount-apfcDiscountedPrice + totalContAmount - contDiscountedPrice})</p>
 
                 <Button variant="outlined" startIcon={<RefreshIcon />} onClick={clearBillHandler}>
                     Reset

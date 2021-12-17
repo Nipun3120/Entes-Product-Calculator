@@ -1,15 +1,14 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { apfcActions } from "../../store/apfcSlice";
 
 export const ApfcItem = (props)=> {
     const dispatch = useDispatch();
+    const contCount = useSelector(state=> state.contactorState.totalQuantity);
     const {id, type, noOfSteps, model, quantity} = props;
     
 
     const decreaseQuantity = ()=> {
-        console.log(id)
         dispatch(apfcActions.decreaseItem(id))
-
     }
     return (
         <div>

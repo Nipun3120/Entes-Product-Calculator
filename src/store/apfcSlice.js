@@ -64,7 +64,7 @@ const apfcSlice = createSlice({
             // console.log('disc: ', ((100-selectedProduct.discount)/100)*selectedProduct.price) 
 
             
-            state.discountedAmount = state.discountedAmount - parseInt(100-selectedProduct.discount)
+            state.discountedAmount = state.discountedAmount - parseInt((100-selectedProduct.discount)*selectedProduct.price/100)
 
             // console.log('hi', parseInt(((100-selectedProduct.discount)*(selectedProduct.price))/100), state.discountedAmount)
             if(product.quantity === 1){
