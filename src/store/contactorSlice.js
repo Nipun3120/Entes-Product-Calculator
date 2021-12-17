@@ -12,7 +12,7 @@ const contactorSlice = createSlice({
         }],
         totalAmount: 0,
         totalQuantity: 0,
-        discountedAmount: 0
+        discountedAmount: 0,
     }, 
     reducers: {
         addContactor(state, action) {
@@ -50,6 +50,12 @@ const contactorSlice = createSlice({
             } else {
                 product.quantity--;
             }
+        },
+        reset(state, action) {
+            state.items = state.items.filter(item=> 1 === 2);
+            state.totalAmount= 0
+            state.totalQuantity= 0
+            state.discountedAmount= 0
         }
     }
 })

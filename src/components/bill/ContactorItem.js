@@ -6,9 +6,7 @@ export const ContactorItem = (props)=> {
     const dispatch = useDispatch();
     const {id, rating, model, quantity} = props;
     
-    console.log(rating)
     const decreaseQuantity = ()=> {
-        console.log(id)
         dispatch(contactorActions.decreaseItem(id))
 
     }

@@ -27,6 +27,7 @@ export const Contactor = ()=> {
     const dispatch = useDispatch();
     const apfcCount = useSelector(state=> state.apfcState.itemsCount);
     const apfcTotalSteps = useSelector(state=> state.apfcState.totalSteps);
+    const contQuantity = useSelector(state=> state.contactorState.totalQuantity);
     const [rating, setRating] = useState('');
     const [quantity, setQuantity] = useState('');
     const [open, setOpen] = useState(false);
@@ -37,18 +38,13 @@ export const Contactor = ()=> {
         const timeInterval = setTimeout(() => {
         setErrorMessage(false)
         setOpen(false)
-        console.log('tick')
         }, 3000)
 
         return () => {
         clearTimeout(timeInterval)
         }
     }, [open]);
-
-    const handleClick = () => {
-      setOpen(true);
-    };
-
+    
     const handleRatingChange = (event)=> {
         setRating(event.target.value);
     }
@@ -62,13 +58,22 @@ export const Contactor = ()=> {
             if(rating && quantity) {
                 // send data
                 
-                dispatch(contactorActions.addContactor({
-                    rating: rating,
-                    quantity: quantity
-                }))
-                setRating('');
-                setQuantity('');
-                setOpen(false);
+                if((parseInt(contQuantity)+parseInt(quantity)) > Math.ceil((0.2*apfcTotalSteps)+apfcTotalSteps)) {
+                    setRating(rating);
+                    setQuantity('');
+                    setOpen(true);
+                    setErrorMessage(`You cannot add more than: ${Math.ceil((0.2*apfcTotalSteps)+apfcTotalSteps)} contractors`)
+                }
+                else {
+                    dispatch(contactorActions.addContactor({
+                        rating: rating,
+                        quantity: quantity
+                    }))
+                    setErrorMessage('');
+                    setOpen(false);
+                    setRating('');
+                    setQuantity('');
+                }
             } else {
                 setErrorMessage('Please fill all the details!')
                 setOpen(true)

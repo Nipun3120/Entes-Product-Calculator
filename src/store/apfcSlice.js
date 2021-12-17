@@ -33,7 +33,7 @@ const apfcSlice = createSlice({
             
             // updating amount
             state.totalAmount = parseInt(state.totalAmount) + parseInt(selectedProduct.price*newItem.quantity)
-            state.totalSteps = parseInt(state.totalSteps) + parseInt(newItem.noOfSteps);
+            state.totalSteps = parseInt(state.totalSteps) + parseInt(newItem.noOfSteps*newItem.quantity);
             state.discountedAmount = parseInt(state.discountedAmount) + parseInt(((100-selectedProduct.discount)*(selectedProduct.price*newItem.quantity))/100)
             
             if(!existingItem) {
@@ -60,16 +60,25 @@ const apfcSlice = createSlice({
 
             // upadating amount
             state.totalAmount = state.totalAmount - (selectedProduct.price)
-            console.log('disc: ', parseInt(((100-selectedProduct.discount)/100)*selectedProduct.price) )
-            console.log('disc: ', ((100-selectedProduct.discount)/100)*selectedProduct.price) 
-            state.discountedAmount = state.discountedAmount - parseInt(((100-selectedProduct.discount)/100)*selectedProduct.price)
+            // console.log('disc: ', parseInt(((100-selectedProduct.discount)/100)*selectedProduct.price) )
+            // console.log('disc: ', ((100-selectedProduct.discount)/100)*selectedProduct.price) 
 
-            console.log('hi', parseInt(((100-selectedProduct.discount)*(selectedProduct.price))/100), state.discountedAmount)
+            
+            state.discountedAmount = state.discountedAmount - parseInt(100-selectedProduct.discount)
+
+            // console.log('hi', parseInt(((100-selectedProduct.discount)*(selectedProduct.price))/100), state.discountedAmount)
             if(product.quantity === 1){
                 state.items = state.items.filter((item, index)=> index !== action.payload)
             } else {
                 product.quantity--;
             }
+        },
+        reset(state, action) {
+            state.items = state.items.filter(item=> 1 === 2)
+            state.discountedAmount = 0;
+            state.itemsCount = 0;
+            state.totalAmount = 0;
+            state.totalSteps = 0;
         }
     }
 })
