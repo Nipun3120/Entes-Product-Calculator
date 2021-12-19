@@ -9,13 +9,13 @@ const app = express();
 const http = httpServer.createServer(app);
 const PORT = 3120;
 
-app.use(express.json({type: 'application/json' }))
-app.use(cors({origin:'*'}))
-
 mongoose.connect("mongodb://localhost/entesdb", ()=> {
     console.log("connected to db"), 
     error=> console.error(error)
 })
+
+app.use(express.json({type: 'application/json' }))
+app.use(cors({origin:'*'}))
 
 app.use('/products', productsRoute)
 

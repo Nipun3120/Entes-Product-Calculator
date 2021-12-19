@@ -16,7 +16,7 @@ route.post('/apfc', async (req, res)=> {
     try{
         const dbResponse = await newApfc.save();
         console.log(dbResponse)
-        res.status(201).send('success!')
+        res.status(201).json({'message': 'object created successfully'})
     } catch (error) {
         res.status(400).json({'error': error}).send('product insertion failed')
     }
