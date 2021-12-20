@@ -25,9 +25,16 @@ route.get('/kvar-rating', async (req, res)=>{
 
 
 route.post('/category-1ct-steps', async (req, res)=> {
-    const cat_1ct_steps = new category1Ct({
-        category: req.body.category
-    })
+    var cat_1ct_steps;
+    if(req.body.type) {
+    cat_1ct_steps = new category1Ct({
+        category: req.body.category,
+        type: req.body.type
+    })} else {
+        cat_1ct_steps = new category1Ct({
+            category: req.body.category,
+        })
+    }
 
     try{
         const dbResponse = await cat_1ct_steps.save();
@@ -39,9 +46,16 @@ route.post('/category-1ct-steps', async (req, res)=> {
     
 })
 route.post('/category-3ct-steps', async (req, res)=> {
-    const cat_3ct_steps = new category3Ct({
-        category: req.body.category
-    })
+    var cat_3ct_steps;
+    if(req.body.type) {
+        cat_3ct_steps = new category1Ct({
+        category: req.body.category,
+        type: req.body.type
+    })} else {
+        cat_3ct_steps = new category1Ct({
+            category: req.body.category,
+        })
+    }
 
     try{
         const dbResponse = await cat_3ct_steps.save();

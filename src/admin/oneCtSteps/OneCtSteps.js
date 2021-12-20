@@ -72,7 +72,7 @@ export const OneCtSteps = ()=> {
             </TableContainer>
 
             <Typography marginTop="50px">
-                <Link to="/add-apfc-relay"><Button variant='contained'>Add More</Button></Link>
+                <Link to="/add-new-steps"><Button variant='contained'>Add More</Button></Link>
             </Typography>
 
         </Container>

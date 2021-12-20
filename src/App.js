@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 import { Home } from "./components";
-import { Apfc, Landing, AddApfc, OneCtSteps } from "./admin";
+import { Apfc, Landing, AddApfc, OneCtSteps, AddNew } from "./admin";
 
 
 export default function App() {
@@ -12,7 +12,8 @@ export default function App() {
         <Route path='/admin' element={<Landing/>} />
         <Route path="/apfc-relay" element={<Apfc/>}/>
         <Route path="/add-apfc-relay" element={<AddApfc/>}/>
-        <Route path="/1-ct-steps" element={<OneCtSteps/>}/>
+        <Route path="/steps" element={<OneCtSteps/>}/>
+        <Route path="/add-new-steps" element={<AddNew/>}/>
       </Routes>
     </div>
   );
