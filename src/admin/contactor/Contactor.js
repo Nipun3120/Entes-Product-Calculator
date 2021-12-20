@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ContRow from './ContRow';
 import { 
     Container, 
     Typography, 
@@ -43,16 +44,18 @@ export const Contactor = ()=> {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                {data.map((item, index)=> (
-                    <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                       <TableCell>{item.model}</TableCell>
-                       <TableCell>{item.rating}</TableCell>
-                       <TableCell>{item.price}</TableCell>
-                       <TableCell>{item.discount}</TableCell>                        
-                       <TableCell>Delete</TableCell>                        
-                    </TableRow>
-                ))}
-
+                {data.length > 0 
+                ? data.map((item, index)=> (
+                    <ContRow 
+                        index={index}
+                        rating={item.rating}
+                        model={item.model}
+                        price={item.price}
+                        discount={item.discount}
+                    />
+                ))
+                : <Typography variant="h5" align="center" color="red">No Data Available</Typography>
+                }
                 </TableBody>
             </Table>
             </TableContainer>

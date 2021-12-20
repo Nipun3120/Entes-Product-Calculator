@@ -47,7 +47,8 @@ export const Apfc = ()=> {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                {data.map((item, index)=> (
+                {data.length > 0
+                ? data.map((item, index)=> (
                     <ApfcRow 
                         index={index}
                         type={item.type}
@@ -56,15 +57,11 @@ export const Apfc = ()=> {
                         price={item.price}
                         discount={item.discount}
                     />
-                    // <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                    //    <TableCell component="th" scope="row">{item.type}</TableCell>
-                    //    <TableCell>{item.noOfSteps}</TableCell>
-                    //    <TableCell>{item.model}</TableCell>
-                    //    <TableCell>{item.price}</TableCell>
-                    //    <TableCell>{item.discount}</TableCell>                        
-                    //    <TableCell></TableCell>                        
-                    // </TableRow>
-                ))}
+
+                ))
+                
+                : <Typography variant="h5" align="center" color="red">No Data Available</Typography>
+                }
 
                 </TableBody>
             </Table>
@@ -77,17 +74,3 @@ export const Apfc = ()=> {
         </Container>
     )
 }
-
-// <TableBody>
-// {data.map((item, index)=> (
-//     <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-//        <TableCell component="th" scope="row">{item.type}</TableCell>
-//        <TableCell>{item.noOfSteps}</TableCell>
-//        <TableCell>{item.model}</TableCell>
-//        <TableCell>{item.price}</TableCell>
-//        <TableCell>{item.discount}</TableCell>                        
-//        <TableCell></TableCell>                        
-//     </TableRow>
-// ))}
-
-// </TableBody>
