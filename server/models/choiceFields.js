@@ -1,15 +1,17 @@
 const mongoose = require('mongoose');
 
 const caterogy_1CTsteps_Schema = new mongoose.Schema({
-    category: {type: Number, required: true}
+    category: {type: Number, required: true},
+    type: {type: String, default:"1 CT"}
 })
 
 const caterogy_3CTsteps_Schema = new mongoose.Schema({
-    category: {type: Number, required: true}
+    category: {type: Number, required: true},
+    type: {type: String, default:"3 CT"}
 })
 
 const kvarRatingSchema = new mongoose.Schema({
-    rating: {type: String, required: true}
+    rating: {type: String, required: true},
 })
 
 const kvarRating = mongoose.model('kvarRating', kvarRatingSchema);
