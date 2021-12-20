@@ -8,38 +8,17 @@ import SaveIcon from '@mui/icons-material/Save';
 import CircularProgress from '@mui/material/CircularProgress';
 import { green } from '@mui/material/colors';
 
-export const AddApfc = ()=> {
+export const AddContactor = ()=> {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const timer = useRef();
 
-    const [type, setType] = useState('');
-    const [steps, setSteps] = useState('');
+    const [rating, setRating] = useState('');
     const [model, setModel] = useState('');
     const [price, setPrice] = useState('');
     const [discount, setDisount] = useState('');
 
-    // const [steps_1, setSteps_1] = useState([]);
-    // const [steps_3, setSteps_3] = useState([]);
-
-    // const getData_1 = async()=> {
-    //     const stepsData = await axios({
-    //         method: 'GET',
-    //         url: 'http://localhost:3120/choice-fields/category-1ct-steps'
-    //     })
-    //     const data = await stepsData.data;
-    //     setSteps_1(data);
-    // }
-    // const getData_3 = async()=> {
-    //     const stepsData = await axios({
-    //         method: 'GET',
-    //         url: 'http://localhost:3120/choice-fields/category-3ct-steps'
-    //     })
-    //     const data = await stepsData.data;
-    //     setSteps_3(data);
-    // }
-    
     const buttonSx = {
         ...(success && {
           bgcolor: green[500],
@@ -49,8 +28,6 @@ export const AddApfc = ()=> {
         }),
       };
     useEffect(()=> {
-        // getData_1();
-        // getData_3();
         return () => {
             clearTimeout(timer.current);
           };
@@ -59,14 +36,13 @@ export const AddApfc = ()=> {
     const sendData = async()=> {
         const res = await axios({
             method: 'POST',
-            url: "http://localhost:3120/products/apfc",
+            url: "http://localhost:3120/products/contactor",
             headers: {
                 "Content-type": "Application/json"
             },
             data: {
-                type,
-                noOfSteps:steps,
                 model,
+                rating,
                 price,
                 discount
             }
@@ -82,16 +58,13 @@ export const AddApfc = ()=> {
             timer.current = window.setTimeout(() => {
             setSuccess(true);
             setLoading(false);
-            navigate('/apfc-relay')
+            navigate('/cap-duty-contactor')
             }, 4000);   
         }
     };
 
-    const handleTypeChange = (event) => {
-        setType(event.target.value);
-    };
-    const stepsOnchange = (event)=> {
-        setSteps(event.target.value)
+    const ratingOnchange = (event)=> {
+        setRating(event.target.value)
     }
     const modelOnchange = (event)=> {
         setModel(event.target.value)
@@ -109,32 +82,9 @@ export const AddApfc = ()=> {
 
     return (
         <>
-        <Typography variant="h4" align="center" marginTop="30px">Add a new APFC</Typography>
+        <Typography variant="h4" align="center" marginTop="30px">Add a new CAP DUTY CONTACTOR</Typography>
         <Container maxWidth="sm">
             {/* for type, steps, model, price, discount */}
-            <FormControl size="medium" fullWidth required="true">
-                <InputLabel id="demo-simple-select-label">Type</InputLabel>
-                    <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={type}
-                    label="type"
-                    onChange={handleTypeChange}
-                    >
-                        <MenuItem value={'1 CT'}>1 CT</MenuItem>
-                        <MenuItem value={'3 CT'}>3 CT</MenuItem>
-                    </Select>
-            </FormControl>
-            <FormControl size="medium" fullWidth style={{marginTop:'30px'}}>
-                <TextField 
-                    id="outlined-basic"  
-                    label="Enter Steps" 
-                    variant="outlined" 
-                    required="true" 
-                    onChange={stepsOnchange}
-                    value={steps}
-                />
-            </FormControl>
             <FormControl size="medium" fullWidth style={{marginTop:'30px'}}>
                 <TextField 
                     id="outlined-basic"  
@@ -143,6 +93,16 @@ export const AddApfc = ()=> {
                     required="true" 
                     onChange={modelOnchange}
                     value={model}
+                />
+            </FormControl>
+            <FormControl size="medium" fullWidth style={{marginTop:'30px'}}>
+                <TextField 
+                    id="outlined-basic"  
+                    label="Enter Rating" 
+                    variant="outlined" 
+                    required="true" 
+                    onChange={ratingOnchange}
+                    value={rating}
                 />
             </FormControl>
             <FormControl size="medium" fullWidth style={{marginTop:'30px'}}>

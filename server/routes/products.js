@@ -23,7 +23,7 @@ route.post('/apfc', async (req, res)=> {
     }
     
 })
-route.post('/contractor', async (req, res)=> {
+route.post('/contactor', async (req, res)=> {
     const newApfc = new contModel({
         rating: req.body.rating,
         model: req.body.model,
@@ -34,7 +34,7 @@ route.post('/contractor', async (req, res)=> {
     try{
         const dbResponse = await newApfc.save();
         console.log(dbResponse)
-        res.status(201).json({'message': 'contractor object created successfully'})
+        res.status(201).json({'message': 'contactor object created successfully'})
     } catch (error) {
         res.status(400).json({'error': error}).send('product insertion failed')
     }
@@ -48,12 +48,34 @@ route.get('/apfc', async (req, res)=> {
     })
 
 })
-route.get('/contractor', async (req, res)=> {
+route.get('/contactor', async (req, res)=> {
     contModel.find({}, (err, products)=> {
         if(err) res.status(400).json({'error': 'failed to fetch objects from database'})
         else res.status(200).json(products)
     })
 
+})
+
+
+route.delete('/apfc', async(req, res)=> {
+   apfcModel.deleteOne({
+       type: req.body.type,
+       model: req.body.model,
+       noOfSteps: req.body.noOfSteps
+   }, (err, message)=> {
+       if(err) res.status(400).json({"error": 'Failed to delete'})
+       else res.status(200).json(message)
+   }) 
+})
+
+route.delete('/contactor', async(req, res)=> {
+   contModel.deleteOne({
+       rating: req.body.rating,
+       model: req.body.model,
+   }, (err, message)=> {
+       if(err) res.status(400).json({"error": 'Failed to delete'})
+       else res.status(200).json(message)
+   }) 
 })
 
 module.exports = route

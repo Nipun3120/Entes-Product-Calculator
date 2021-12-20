@@ -14,7 +14,9 @@ export const Landing = ()=> {
                         </Link>
                     </Grid>
                     <Grid item xs={12} sm={6} md={4} className="admin-grid-container">
-                            contactor
+                        <Link to="/cap-duty-contactor">
+                                <Button variant="contained">Contactor</Button>
+                        </Link>
                     </Grid>
                     {/* <Grid item xs={12} sm={6} md={4} className="admin-grid-container">
                         <Link to="/steps">

@@ -13,15 +13,12 @@ import {
     Button
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-
-import { ApfcRow } from './ApfcRow';
-
-export const Apfc = ()=> {
+export const Contactor = ()=> {
     const [data, setDate] = useState([]);
     const getData = async()=> {
         const apfcdata = await axios({
             method: 'GET',
-            url: 'http://localhost:3120/products/apfc'
+            url: 'http://localhost:3120/products/contactor'
         })
         const data = await apfcdata.data;
         setDate(data);
@@ -33,14 +30,13 @@ export const Apfc = ()=> {
     console.log(data)
     return (
         <Container>  
-            <Typography variant="h3" align="center">APFC Relay</Typography>
+            <Typography variant="h3" align="center">CAP DUTY CONTACTOR</Typography>
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell>Type</TableCell>
-                        <TableCell>No of Steps</TableCell>
                         <TableCell>Model</TableCell>
+                        <TableCell>Rating</TableCell>
                         <TableCell>Price</TableCell>
                         <TableCell>Discount</TableCell>
                         <TableCell>Remove</TableCell>
@@ -49,12 +45,11 @@ export const Apfc = ()=> {
                 <TableBody>
                 {data.map((item, index)=> (
                     <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                       <TableCell component="th" scope="row">{item.type}</TableCell>
-                       <TableCell>{item.noOfSteps}</TableCell>
                        <TableCell>{item.model}</TableCell>
+                       <TableCell>{item.rating}</TableCell>
                        <TableCell>{item.price}</TableCell>
                        <TableCell>{item.discount}</TableCell>                        
-                       <TableCell></TableCell>                        
+                       <TableCell>Delete</TableCell>                        
                     </TableRow>
                 ))}
 
@@ -63,23 +58,9 @@ export const Apfc = ()=> {
             </TableContainer>
 
             <Typography marginTop="50px">
-                <Link to="/add-apfc-relay"><Button variant='contained'>Add More</Button></Link>
+                <Link to="/add-cap-duty-contactor"><Button variant='contained'>Add More</Button></Link>
             </Typography>
 
         </Container>
     )
 }
-
-// <TableBody>
-// {data.map((item, index)=> (
-//     <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-//        <TableCell component="th" scope="row">{item.type}</TableCell>
-//        <TableCell>{item.noOfSteps}</TableCell>
-//        <TableCell>{item.model}</TableCell>
-//        <TableCell>{item.price}</TableCell>
-//        <TableCell>{item.discount}</TableCell>                        
-//        <TableCell></TableCell>                        
-//     </TableRow>
-// ))}
-
-// </TableBody>
