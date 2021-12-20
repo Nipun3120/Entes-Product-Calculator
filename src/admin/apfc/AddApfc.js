@@ -61,7 +61,7 @@ export const AddApfc = ()=> {
             method: 'POST',
             url: "http://localhost:3120/products/apfc",
             headers: {
-                "Content-type": "Application/json"
+                "Content-Type": "Application/json"
             },
             data: {
                 type,

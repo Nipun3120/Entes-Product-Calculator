@@ -38,7 +38,7 @@ export const AddContactor = ()=> {
             method: 'POST',
             url: "http://localhost:3120/products/contactor",
             headers: {
-                "Content-type": "Application/json"
+                "Content-Type": "Application/json"
             },
             data: {
                 model,

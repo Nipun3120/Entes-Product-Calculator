@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import { ApfcRow } from './ApfcRow';
+import ApfcRow from './ApfcRow';
 
 export const Apfc = ()=> {
     const [data, setDate] = useState([]);
@@ -48,14 +48,22 @@ export const Apfc = ()=> {
                 </TableHead>
                 <TableBody>
                 {data.map((item, index)=> (
-                    <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
-                       <TableCell component="th" scope="row">{item.type}</TableCell>
-                       <TableCell>{item.noOfSteps}</TableCell>
-                       <TableCell>{item.model}</TableCell>
-                       <TableCell>{item.price}</TableCell>
-                       <TableCell>{item.discount}</TableCell>                        
-                       <TableCell></TableCell>                        
-                    </TableRow>
+                    <ApfcRow 
+                        index={index}
+                        type={item.type}
+                        noOfSteps={item.noOfSteps}
+                        model={item.model}
+                        price={item.price}
+                        discount={item.discount}
+                    />
+                    // <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
+                    //    <TableCell component="th" scope="row">{item.type}</TableCell>
+                    //    <TableCell>{item.noOfSteps}</TableCell>
+                    //    <TableCell>{item.model}</TableCell>
+                    //    <TableCell>{item.price}</TableCell>
+                    //    <TableCell>{item.discount}</TableCell>                        
+                    //    <TableCell></TableCell>                        
+                    // </TableRow>
                 ))}
 
                 </TableBody>
