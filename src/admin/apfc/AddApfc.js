@@ -1,5 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
+import { useNavigate} from "react-router-dom";
 import { Container, FormControl, Typography, InputLabel, MenuItem, Select, TextField, Button, Box  } from "@mui/material"
 import Fab from '@mui/material/Fab';
 import CheckIcon from '@mui/icons-material/Check';
@@ -8,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { green } from '@mui/material/colors';
 
 export const AddApfc = ()=> {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const timer = useRef();
@@ -56,20 +58,32 @@ export const AddApfc = ()=> {
     const sendData = async()=> {
         const res = await axios({
             method: 'POST',
-            url: 'http://localhost:3120/products/apfc'
-        })
+            url: "http://localhost:3120/products/apfc",
+            headers: {
+                "Content-type": "Application/json"
+            },
+            data: {
+                type,
+                noOfSteps:steps,
+                model,
+                price,
+                discount
+            }
+        });
+        console.log(res)
     }
 
     const handleButtonClick = () => {
-    sendData();
-    if (!loading) {
-        setSuccess(false);
-        setLoading(true);
-        timer.current = window.setTimeout(() => {
-        setSuccess(true);
-        setLoading(false);
-        }, 4000);
-    }
+        sendData();
+        if (!loading) {
+            setSuccess(false);
+            setLoading(true);
+            timer.current = window.setTimeout(() => {
+            setSuccess(true);
+            setLoading(false);
+            navigate('/apfc-relay')
+            }, 4000);   
+        }
     };
 
     const handleTypeChange = (event) => {
