@@ -1,5 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import capDutyContactor from '../database/capDutyContactor';
+import axios from 'axios';
+
+var contData = [];
+const getData = async()=> {
+    const res = await axios({
+        method: 'GET',
+        url: 'http://localhost:3120/products/contactor'
+    });
+    const data = await res.data;
+    data.map(item=> contData.push(item))
+}
+getData();
 
 const contactorSlice = createSlice({
     name: 'contactor',
@@ -17,8 +29,8 @@ const contactorSlice = createSlice({
     reducers: {
         addContactor(state, action) {
             const newItem = action.payload;
-            const selectedProduct = capDutyContactor.find(item=> (item.rating === newItem.rating))
-
+            const selectedProduct = contData.find(item=> (item.rating === newItem.rating))
+            console.log(selectedProduct)
             const existingItem = state.items.find(item => (item.rating === newItem.rating))
 
             state.totalAmount = parseInt(state.totalAmount) + parseInt(selectedProduct.price*newItem.quantity)
@@ -39,7 +51,7 @@ const contactorSlice = createSlice({
 
         decreaseItem(state, action) {
             const product = state.items.find((item, index)=> index === action.payload);
-            const selectedProduct = capDutyContactor.find(item=> (item.rating === product.rating))
+            const selectedProduct = contData.find(item=> (item.rating === product.rating))
 
             state.totalAmount = state.totalAmount - parseInt(product.price)
             state.discountedAmount = state.discountedAmount - parseInt(((100-selectedProduct.discount)*(selectedProduct.price))/100)
