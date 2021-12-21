@@ -1,23 +1,31 @@
-export const CATEGORY_1CT = [
-    4, 6, 9, 12
-]
+import axios from "axios"
 
-export const CATEGORY_3CT = [
-    9, 12, 15
-]
+export const CATEGORY_1CT = []
+export const CATEGORY_3CT = []
+export const KVAR_RATING = []
 
-export const KVAR_RATING = [
-    '2.5 KVar',
-    '5 KVar',
-    '7.5 KVar',
-    '12 KVar',
-    '16 KVar',
-    '20 KVar',
-    '25 KVar',
-    '33 KVar',
-    '40 KVar',
-    '50 KVar',
-    '60 KVar',
-    '75 KVar',
-    '100 KVar'
-]
+export const getRating = async ()=> {
+    const res = await axios({
+        method: 'GET',
+        url: 'http://localhost:3120/choice-fields/kvar-rating'
+    });
+    const data = await res.data;
+    data.map(item=> KVAR_RATING.push(item))
+}
+
+export const oneCtSteps = async()=> {
+    const res = await axios({
+        method: 'GET',
+        url: 'http://localhost:3120/choice-fields/category-1ct-steps'
+    });
+    const data = await res.data;
+    data.map(item=> CATEGORY_1CT.push(item))    
+}
+export const threeCtSteps = async()=> {
+    const res = await axios({
+        method: 'GET',
+        url: 'http://localhost:3120/choice-fields/category-3ct-steps'
+    });
+    const data = await res.data;
+    data.map(item=> CATEGORY_3CT.push(item))    
+}

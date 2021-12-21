@@ -20,7 +20,7 @@ import { KVAR_RATING } from '../../../database/staticLists';
 
 const Alert = forwardRef(function Alert(props, ref) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props}/>;
-  });
+});
 
 
 export const Contactor = ()=> {
@@ -32,7 +32,6 @@ export const Contactor = ()=> {
     const [quantity, setQuantity] = useState('');
     const [open, setOpen] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-
 
     useEffect(() => {
         const timeInterval = setTimeout(() => {
@@ -88,6 +87,7 @@ export const Contactor = ()=> {
         setRating('')
         setQuantity('');
     }
+
     return (
     
         <div className="apfcFormWrapper">
@@ -105,11 +105,7 @@ export const Contactor = ()=> {
                     label="Rating"
                     onChange={handleRatingChange}
                     >
-                    
-                    {KVAR_RATING.map(item=> <MenuItem value={item}>{item}</MenuItem>)}
-                        {/* <MenuItem value={'2.5 Kvar'}>2.5 Kvar</MenuItem>
-                        <MenuItem value={'2.5 Kvar'}>2.5 Kvar</MenuItem>
-                        <MenuItem value={'2.5 Kvar'}>2.5 Kvar</MenuItem> */}
+                    {KVAR_RATING.map(item=> <MenuItem value={item.rating}>{item.rating}</MenuItem>)}
 
                     </Select>
             </FormControl>

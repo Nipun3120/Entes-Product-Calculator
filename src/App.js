@@ -1,10 +1,16 @@
+import { useEffect } from 'react';
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 import { Home } from "./components";
 import { Apfc, Landing, AddApfc, OneCtSteps, AddNew, Contactor, AddContactor } from "./admin";
-
+import { getRating, oneCtSteps, threeCtSteps } from './database/staticLists';
 
 export default function App() {
+  useEffect(()=> {
+    getRating();
+    oneCtSteps();
+    threeCtSteps();
+  }, []);
   return (
     <div className="App">
       <Routes>

@@ -106,8 +106,8 @@ export const Apfc = ()=> {
                     onChange={handleStepsChange}
                     >
                         {type === '1 CT' 
-                            ? CATEGORY_1CT.map(item=><MenuItem value={item}>{item}</MenuItem>)
-                            : CATEGORY_3CT.map(item=><MenuItem value={item}>{item}</MenuItem>)
+                            ? CATEGORY_1CT.map(item=><MenuItem value={item.category}>{item.category}</MenuItem>)
+                            : CATEGORY_3CT.map(item=><MenuItem value={item.category}>{item.category}</MenuItem>)
                         }
                     </Select>
             </FormControl>
