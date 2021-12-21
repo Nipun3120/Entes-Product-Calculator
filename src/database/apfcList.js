@@ -1,3 +1,14 @@
+// import axios from 'axios';
+
+// const getApftList = async = ()=> {
+//     const res = await axios({
+//         method: "GET",
+//         url: "http://localhost:3120/products/apfc"
+//     })
+//     const data = await res.data
+//     return data
+// }
+
 const apfcList = [
     {
         id: 1,

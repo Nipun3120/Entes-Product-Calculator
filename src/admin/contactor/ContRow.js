@@ -18,7 +18,6 @@ const ContRow = ({index, model, rating, price, discount}) => {
                 model, rating
             }
         })
-        console.log(res)
         window.location.reload(true)
     }
 

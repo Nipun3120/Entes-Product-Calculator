@@ -1,5 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import apfcList from "../database/apfcList";
+import axios from "axios";
+
+var apfcData = [];
+const getApfcData = async()=> {
+    const res = await axios({
+        method:'GET',
+        url:'http://localhost:3120/products/apfc'
+    });
+    const data = await res.data
+    data.map(item=> apfcData.push(item))
+}
+
+getApfcData();
 
 const apfcSlice = createSlice({
     name: 'apfc',
@@ -21,7 +33,7 @@ const apfcSlice = createSlice({
             const newItem = action.payload
 
             // getting product from list
-            const selectedProduct = apfcList.find(item=> (item.type === newItem.type && item.noOfSteps === newItem.noOfSteps))
+            const selectedProduct = apfcData.find(item=> (item.type === newItem.type && item.noOfSteps === newItem.noOfSteps))
             
             // chek for the current item i.e. is it already in the cart 
             // if yes then update quantity and price, 
@@ -53,7 +65,7 @@ const apfcSlice = createSlice({
         decreaseItem(state, action) {
             // geting item
             const product = state.items.find((item, index)=> index === action.payload);
-            const selectedProduct = apfcList.find(item=> (item.type === product.type && item.noOfSteps === product.noOfSteps))
+            const selectedProduct = apfcData.find(item=> (item.type === product.type && item.noOfSteps === product.noOfSteps))
 
             // decresign count by 1
             state.itemsCount--;

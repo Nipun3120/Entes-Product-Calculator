@@ -18,7 +18,6 @@ const ApfcRow = ({index, type, noOfSteps, model, price, discount}) => {
                 type, model, noOfSteps
             }
         })
-        console.log(res)
         window.location.reload(true)
     }
 

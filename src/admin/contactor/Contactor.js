@@ -28,7 +28,6 @@ export const Contactor = ()=> {
         getData();
     }, [])
 
-    console.log(data)
     return (
         <Container>  
             <Typography variant="h3" align="center">CAP DUTY CONTACTOR</Typography>
