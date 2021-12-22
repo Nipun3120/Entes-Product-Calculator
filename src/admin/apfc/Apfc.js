@@ -23,6 +23,7 @@ export const Apfc = ()=> {
             method: 'GET',
             url: 'http://localhost:3120/products/apfc'
         })
+        console.log(apfcdata);
         const data = await apfcdata.data;
         setDate(data);
     }
