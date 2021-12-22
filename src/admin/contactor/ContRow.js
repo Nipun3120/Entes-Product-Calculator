@@ -50,7 +50,6 @@ const ContRow = ({id, index, model, rating, price, discount}) => {
             }
         })
         const data = await res.status;
-        console.log(data)
         window.location.reload(true)
         setUpdateActive(!updateActive)
     }
