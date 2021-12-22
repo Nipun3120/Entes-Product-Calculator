@@ -7,6 +7,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import SaveIcon from '@mui/icons-material/Save';
 import CircularProgress from '@mui/material/CircularProgress';
 import { green } from '@mui/material/colors';
+import { CATEGORY_1CT, CATEGORY_3CT } from '../../database/staticLists';
 
 export const AddApfc = ()=> {
     const navigate = useNavigate();
@@ -19,26 +20,6 @@ export const AddApfc = ()=> {
     const [model, setModel] = useState('');
     const [price, setPrice] = useState('');
     const [discount, setDisount] = useState('');
-
-    // const [steps_1, setSteps_1] = useState([]);
-    // const [steps_3, setSteps_3] = useState([]);
-
-    // const getData_1 = async()=> {
-    //     const stepsData = await axios({
-    //         method: 'GET',
-    //         url: 'http://localhost:3120/choice-fields/category-1ct-steps'
-    //     })
-    //     const data = await stepsData.data;
-    //     setSteps_1(data);
-    // }
-    // const getData_3 = async()=> {
-    //     const stepsData = await axios({
-    //         method: 'GET',
-    //         url: 'http://localhost:3120/choice-fields/category-3ct-steps'
-    //     })
-    //     const data = await stepsData.data;
-    //     setSteps_3(data);
-    // }
     
     const buttonSx = {
         ...(success && {
@@ -125,7 +106,23 @@ export const AddApfc = ()=> {
                         <MenuItem value={'3 CT'}>3 CT</MenuItem>
                     </Select>
             </FormControl>
-            <FormControl size="medium" fullWidth style={{marginTop:'30px'}}>
+
+            <FormControl size="medium" fullWidth required="true" style={{marginTop: '30px'}}>
+                <InputLabel id="demo-simple-select-label">Number of Steps</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={steps}
+                    label="Number Of Steps"
+                    onChange={stepsOnchange}
+                    >
+                        {type && type === '1 CT' 
+                            ? CATEGORY_1CT.map(item=><MenuItem value={item.category}>{item.category}</MenuItem>)
+                            : CATEGORY_3CT.map(item=><MenuItem value={item.category}>{item.category}</MenuItem>)
+                        }
+                    </Select>
+            </FormControl>
+            {/* <FormControl size="medium" fullWidth style={{marginTop:'30px'}}>
                 <TextField 
                     id="outlined-basic"  
                     label="Enter Steps" 
@@ -134,7 +131,7 @@ export const AddApfc = ()=> {
                     onChange={stepsOnchange}
                     value={steps}
                 />
-            </FormControl>
+            </FormControl> */}
             <FormControl size="medium" fullWidth style={{marginTop:'30px'}}>
                 <TextField 
                     id="outlined-basic"  
