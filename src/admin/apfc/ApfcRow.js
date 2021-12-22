@@ -56,6 +56,7 @@ const ApfcRow = ({id, index, type, noOfSteps, model, price, discount}) => {
         window.location.reload(true)
         setUpdateActive(!updateActive)
     }
+    
     return (
     <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
        <TableCell component="th" scope="row">{type}</TableCell>

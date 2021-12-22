@@ -39,13 +39,15 @@ export const Contactor = ()=> {
                         <TableCell>Rating</TableCell>
                         <TableCell>Price</TableCell>
                         <TableCell>Discount</TableCell>
-                        <TableCell>Remove</TableCell>
+                        <TableCell style={{borderRight: '1px solid #000'}}>Remove</TableCell>
+                        <TableCell>Update</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                 {data.length > 0 
                 ? data.map((item, index)=> (
                     <ContRow 
+                        id={item._id}
                         index={index}
                         rating={item.rating}
                         model={item.model}
