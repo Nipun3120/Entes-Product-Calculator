@@ -44,13 +44,15 @@ export const Apfc = ()=> {
                         <TableCell>Model</TableCell>
                         <TableCell>Price</TableCell>
                         <TableCell>Discount</TableCell>
-                        <TableCell>Remove</TableCell>
+                        <TableCell style={{borderRight: '1px solid #000'}}>Remove</TableCell>
+                        <TableCell>Update</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                 {data.length > 0
                 ? data.map((item, index)=> (
                     <ApfcRow 
+                        id={item._id}
                         index={index}
                         type={item.type}
                         noOfSteps={item.noOfSteps}

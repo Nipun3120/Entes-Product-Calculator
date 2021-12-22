@@ -82,9 +82,9 @@ route.delete('/contactor', async(req, res)=> {
 route.post('/apfc/:id', async (req, res)=> {
     const id = req.params.id;
     const updatedItem = {
-        type:  req.body.type,
-        model:  req.body.model,
-        noOfSteps: req.body.noOfSteps,
+        // type:  req.body.type,
+        // model:  req.body.model,
+        // noOfSteps: req.body.noOfSteps,
         price:  req.body.price,
         discount:  req.body.discount
     }
@@ -92,7 +92,20 @@ route.post('/apfc/:id', async (req, res)=> {
         if(err) res.status(400).json({"error": "fields not verified or not updated, TRY AGAIN !!"})
         else res.status(200).json(result)
     })
+})
 
+route.post('/contactor/:id', async (req, res)=> {
+    const id = req.params.id;
+    const updatedItem = {
+        // model:  req.body.model,
+        // rating: req.body.rating,
+        price:  req.body.price,
+        discount:  req.body.discount
+    }
+    contModel.updateOne({"_id": objectId(id)}, {$set: updatedItem}, (err, result)=> { 
+        if(err) res.status(400).json({"error": "fields not verified or not updated, TRY AGAIN !!"})
+        else res.status(200).json(result)
+    })
 })
 
 module.exports = route
