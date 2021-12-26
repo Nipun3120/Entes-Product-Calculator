@@ -1,3 +1,8 @@
+:root{
+  --main-color-yellow: #FFD000;
+  --main-color-white: #f8f8f8;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -5,5 +10,6 @@ html, body {
   width: 100%;
   box-sizing: border-box;
   font-family: sans-serif;
-  background-color: #fdd5b5;
+  background-color: var(--main-color-white);
 }
+

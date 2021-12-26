@@ -5,6 +5,7 @@ import { contactorActions } from '../../store/contactorSlice';
 import { ApfcItem } from '../';
 import { ContactorItem } from '../';
 
+import { Container } from '@mui/material';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
@@ -32,7 +33,7 @@ export const Bill = ()=> {
     }
 
     return (
-        <>
+        <Container>
             <div>Your Package</div>
             <p>total apfc items: {count}</p>
             <p>total contractor quantity: {contQuantity}</p>
@@ -87,6 +88,6 @@ export const Bill = ()=> {
                     Send response
                 </Button>    
             </div>
-        </>
+        </Container>
     )
 }

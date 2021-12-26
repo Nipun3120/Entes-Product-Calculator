@@ -7,3 +7,35 @@
     max-width: 60%;
 
 }
+.css-jpln7h-MuiTabs-scroller{
+    border: none;
+}
+
+
+@media(max-width: 480px) {
+    .css-xdmu94-MuiContainer-root {
+        /* position: absolute;
+        top: 20%; */
+    }
+    .apfcFormWrapper {
+        max-width: 100%;
+    }
+    .css-heg063-MuiTabs-flexContainer {     /* switch */
+        position: absolute;
+        left: 30%;
+        transform: translate(-40%);
+        
+    }
+    .css-13xfq8m-MuiTabPanel-root {        /* form */
+        position: absolute;
+        left: 30%;
+        transform: translate(-20%);
+    }
+
+    .css-1oqqzyl-MuiContainer-root {        /* bill */
+        position: absolute;
+        top: 400px;
+        left: 50%;
+        transform: translate(-50%);
+    }
+}

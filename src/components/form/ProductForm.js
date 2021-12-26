@@ -24,7 +24,7 @@ export const ProductForm = ()=> {
       };
 
     return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" style={{margin:'0 auto'}}>
         <Box sx={{ width: '100%', typography: 'body1' }}>
             <TabContext value={value}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
