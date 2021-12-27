@@ -18,10 +18,18 @@
 }
 
 .largeScreenLogo{
-    margin: 20px 50vw;
+    margin: 0px 50vw;
+    padding: 30px;
     transform: translate(-60%);
 }
 
 .MuiAppBar-root, .css-50g5lf-MuiPaper-root-MuiAppBar-root {
     height: 130px;
+}
+
+
+@media(max-width: 480px){
+    .largeScreenLogoMobile{
+        padding: 30px;
+    }
 }

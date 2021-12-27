@@ -12,10 +12,10 @@ export const Home = ()=> {
         <div className="homeWrapper">
             <ResponsiveAppBar />
             <Grid container spacing={0}>
-                <Grid item xs={12} lg={8} md={6} className="gridProductForm"> 
+                <Grid item xs={12} lg={7} md={6} className="gridProductForm"> 
                     <ProductForm/>
                 </Grid>
-                <Grid item xs={12} lg={4} md={4}>
+                <Grid item xs={12} lg={5} md={4}>
                     <Bill/>
                 </Grid>
             </Grid>

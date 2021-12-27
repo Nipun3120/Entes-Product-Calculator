@@ -38,7 +38,7 @@ const ResponsiveAppBar = () => {
                 component="div"
                 sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
               >
-                <img src={logo} height="100px" width="250px"></img>
+                <img src={logo} height="100px" width="250px" className="largeScreenLogoMobile"></img>
               </Typography>
             </Toolbar>
 
