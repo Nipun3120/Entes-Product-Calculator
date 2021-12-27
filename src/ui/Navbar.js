@@ -19,7 +19,7 @@ const ResponsiveAppBar = () => {
     const backgroundColor = orange[50];
     return (
         <AppBar position="static" color="secondary">
-          <Container maxWidth="xl">
+
             <Toolbar disableGutters>
               <Typography
                 variant="h6"
@@ -41,7 +41,7 @@ const ResponsiveAppBar = () => {
                 <img src={logo} height="100px" width="250px"></img>
               </Typography>
             </Toolbar>
-          </Container>
+
         </AppBar>
       );
 };

@@ -18,6 +18,10 @@
 }
 
 .largeScreenLogo{
-    margin: 0 50vw;
+    margin: 20px 50vw;
     transform: translate(-60%);
+}
+
+.MuiAppBar-root, .css-50g5lf-MuiPaper-root-MuiAppBar-root {
+    height: 130px;
 }
