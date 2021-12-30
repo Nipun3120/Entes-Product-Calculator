@@ -1,32 +1,52 @@
+import { Box, Container, TableCell, TableRow, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { apfcActions } from "../../store/apfcSlice";
+
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import './bill.css';
 
 export const ApfcItem = (props)=> {
     const dispatch = useDispatch();
     const contCount = useSelector(state=> state.contactorState.totalQuantity);
-    const {id, type, noOfSteps, model, quantity} = props;
+    const {id, type, noOfSteps, model, quantity, price} = props;
     
 
     const decreaseQuantity = ()=> {
         dispatch(apfcActions.decreaseItem(id))
     }
     return (
-        <div>
-            {/* {id !== 0 && id} */}
-            <div>
-                {type !=='' && <p>Type of apfc: {type}</p>}
-            </div>
-            <div>
-                {noOfSteps !=='' && <p>Number Of Steps: {noOfSteps}</p>}
-            </div>
-            <div>
-                {quantity !== '' && 
-                    <p>Quantity: {quantity} <span onClick={decreaseQuantity} style={{marginLeft:'20px', textDecoration: 'underline', cursor:'pointer'}}>(remove)</span></p>
-                }
-            </div>
-            <div>
-                {model!== '' &&<p>Model: {model}</p>}
-            </div>
-        </div>
+        <>
+            <TableRow>
+                <TableCell>
+                    {model!== '' &&<Typography className="mobileFontBillItem">{model}</Typography>}
+                </TableCell>
+                <TableCell>
+                    {type !=='' && <Typography className="mobileFontBillItem">{type}</Typography>}
+                </TableCell>
+                <TableCell>
+                    {noOfSteps !=='' && <Typography className="mobileFontBillItem">{noOfSteps}</Typography>}
+                </TableCell>
+                <TableCell className="mobileFontBillItem">
+                    {price}
+                </TableCell>
+                <TableCell>
+                    {quantity !== '' && 
+                        <Typography>{quantity} 
+                        <ArrowDownwardIcon onClick={decreaseQuantity} style={{position:'absolute', cursor:'pointer'}} className="mobileFontBillItem"/>
+                        
+                            {/* <span onClick={decreaseQuantity} 
+                                style= {{
+                                    marginLeft:'20px', 
+                                    textDecoration: 'underline', 
+                                    cursor:'pointer'
+                                }}>
+                                (remove)
+                            </span> */}
+                        </Typography>
+                    }
+                </TableCell>
+
+            </TableRow>
+        </>
     )
 }

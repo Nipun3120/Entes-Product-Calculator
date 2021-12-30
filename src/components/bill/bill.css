@@ -1,3 +1,29 @@
-.MuiContainer-root {
-    margin-top: 10vh;
+.billContainer{
+    width: 50vw;
+    background-color: beige;
+
+    height: 70vh;
+}
+
+.billApfc{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+
+
+@media(max-width:480px) {
+    .billContainer{
+        /* margin-top: 30vh; */
+    }
+    .mobileFontBillItem{
+        font-size: 0.3rem;
+    }
+}
+.css-1ex1afd-MuiTableCell-root {
+    display: none;
+}
+
+.css-1ygcj2i-MuiTableCell-root {
+    border: none;
 }

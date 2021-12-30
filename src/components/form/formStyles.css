@@ -1,14 +1,18 @@
 .MuiContainer-root {
-    margin-top: 10vh;
+    /* margin-top: 10vh; */
 }
-.apfcFormWrapper{
-    margin-top: 30px;
-    /* padding: 0 20px; */
-    max-width: 60%;
+
+.css-heg063-MuiTabs-flexContainer{
+    padding: 0 20px;
+    margin: 0 20%;
 
 }
-.css-jpln7h-MuiTabs-scroller{
-    border: none;
+
+.apfcFormWrapper{
+    /* margin-top: 30px; */
+    padding: 0 20px;
+    margin: 0 20%;
+
 }
 
 
@@ -17,24 +21,30 @@
         /* position: absolute;
         top: 20%; */
     }
+    
     .apfcFormWrapper {
+        /* margin-top: -200px; */
         max-width: 100%;
     }
+
     .css-heg063-MuiTabs-flexContainer {     /* switch */
-        position: absolute;
+        margin: 0;
+        /* position: absolute;
         left: 30%;
-        transform: translate(-40%);
+        transform: translate(-40%); */
         
     }
-    .css-13xfq8m-MuiTabPanel-root {        /* form */
-        position: absolute;
+
+    .apfcFormWrapper {        /* form */
+        margin: 0;
+        /* position: absolute;
         left: 20%;
-        transform: translate(-10%);
+        transform: translate(-10%); */
     }
 
     .css-1oqqzyl-MuiContainer-root {        /* bill */
         position: absolute;
-        top: 400px;
+        top: 100%;
         left: 50%;
         transform: translate(-50%);
     }

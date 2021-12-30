@@ -5,9 +5,11 @@ import { contactorActions } from '../../store/contactorSlice';
 import { ApfcItem } from '../';
 import { ContactorItem } from '../';
 
-import { Container } from '@mui/material';
+import { Container, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
+
+import './bill.css';
 
 export const Bill = ()=> {
     const dispatch = useDispatch();
@@ -33,35 +35,61 @@ export const Bill = ()=> {
     }
 
     return (
-        <Container>
-            <div>Your Package</div>
-            <p>total apfc items: {count}</p>
-            <p>total contractor quantity: {contQuantity}</p>
+        <Container className="billContainer">
+            <Typography variant="h4" align="center">Your Package</Typography>
             {/* <p>steps: {steps}</p> */}
-            <div style={{borderTop:'1px solid #000'}}>
-                <h4>APFC</h4>
-                {apfcState.map((item, index) => {
-                    return (
-                        <div className="bill">
-                            <ApfcItem 
-                                key={index}
-                                id={index}
-                                type={item.type} 
-                                model={item.model} 
-                                noOfSteps={item.noOfSteps} 
-                                quantity={item.quantity}
-                            />
-                        </div>
-                    )
-                })}
+            <div className="billApfc"> 
+                <Typography variant="h6">APFC</Typography>
+                {/* <Typography variant="p">Total Count : {count}</Typography> */}
+                <Table aria-label="simple table" style={{marginBottom:'30px'}}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Model</TableCell>
+                            <TableCell>Type</TableCell>
+                            <TableCell>Steps</TableCell>
+                            <TableCell>Price</TableCell>
+                            <TableCell>Quantity</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {apfcState.map((item, index) => {
+                            if((item.type === '' && item.price === 0) || totalApfcAmount === 0)
+                            return (<></>)
+                        return (
+                                <ApfcItem 
+                                    key={index}
+                                    id={index}
+                                    type={item.type} 
+                                    model={item.model} 
+                                    noOfSteps={item.noOfSteps} 
+                                    quantity={item.quantity}
+                                    price={item.price}
+                                />
+                            )
+                        })}
+                    </TableBody>
+                </Table>
+
 
             </div>
             
-            <div style={{borderTop:'1px solid #000'}}>
-                <h4>CONTACTOR</h4>
-                {contactorState.map((item, index)=> {
-                    return (
-                        <div className="bill">
+            <div>
+                <Typography variant="h6">CONTACTOR</Typography>
+                {/* <Typography variant="p">Total Count: {contQuantity}</Typography> */}
+                <Table aria-label="simple table" style={{marginBottom:'30px'}}>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Model</TableCell>
+                            <TableCell>Rating</TableCell>
+                            <TableCell>Price</TableCell>
+                            <TableCell>Quantity</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {contactorState.map((item, index)=> {
+                            if((item.type === '' && item.price === 0) || totalContAmount === 0)
+                            return (<></>)
+                        return (
                             <ContactorItem 
                                 key={index}
                                 id={index}
@@ -69,9 +97,11 @@ export const Bill = ()=> {
                                 model={item.model}
                                 quantity={item.quantity}
                             />
-                        </div>
-                    )
-                })}
+                        )})}
+
+                    </TableBody>
+                </Table>
+
             </div>
             
             <div style={{borderTop:'1px solid #000'}}>
